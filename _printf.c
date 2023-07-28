@@ -4,10 +4,10 @@ int _printf(const char *format, ...)
 {
 	char *buffer;
 	
-	int i = 0; // variable for iterator of while loop
-	int char_printf = 0; // character count to print
+	int i = 0; /* variable for iterator of while loop */
+	int char_printf = 0; /* character count to print */
 
-	va_list args; // argument list initializer
+	va_list args; /* argument list initializer */
 	int (*format_printer)(char *, int, va_list);
 
 	buffer = malloc(3000); 
@@ -24,7 +24,7 @@ int _printf(const char *format, ...)
 		return(0);
 	}
 
-	va_start(args, format); // start list to loop through args
+	va_start(args, format); /* start list to loop through args */
 
 	while (format[i])
 	{
@@ -52,10 +52,10 @@ int _printf(const char *format, ...)
 		i++;
 	}
 
-	write(1, buffer, char_printf); // write... to print the buffer
-	va_end(args); // variadic release
-	free(buffer); // malloc release
-	return(char_printf); // return number of characters printed
+	write(1, buffer, char_printf); // write... to print the buffer */
+	va_end(args); /* variadic release */
+	free(buffer); /* malloc release */
+	return(char_printf); /* return number of characters printed */
 }
 
 
