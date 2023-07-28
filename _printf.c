@@ -15,7 +15,7 @@ int _printf(const char *format, ...)
 	if ((!format || !buffer) || (format[0] == '%' && format[1] == '\0'))
 	{
 		free(buffer);
-		return(0);
+		exit(1);
 	}
 
 	va_start(args, format);
