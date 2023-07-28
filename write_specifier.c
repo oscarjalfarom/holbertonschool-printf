@@ -8,7 +8,7 @@ int write_char(char *buffer, int char_print, va_list value)
 	{
 		write(1, "\0\0", 2);
 		free(buffer);
-		return(0);
+		exit(0);
 	}
 
 	buffer[0] = cha;
