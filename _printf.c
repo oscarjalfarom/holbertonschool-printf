@@ -9,14 +9,11 @@
 int _printf(const char *format, ...)
 {
 	char *buffer;
-	int i = 0;
-	int char_printf = 0;
-
+	int i = 0, char_printf = 0;
 	va_list args;
 	int (*format_printer)(char *, int, va_list);
 
 	buffer = malloc(3000);
-
 	if ((!format || !buffer) || (format[0] == '%' && format[1] == '\0'))
 	{
 		free(buffer);
@@ -42,11 +39,9 @@ int _printf(const char *format, ...)
 				char_printf++;
 				continue;
 			}
-
 			char_printf = format_printer(&buffer[char_printf], char_printf, args);
 			i++;
 		}
-
 		i++;
 	}
 
@@ -57,7 +52,8 @@ int _printf(const char *format, ...)
 }
 
 /**
- * get_print_function - Find the corresponding print function for the format specifier.
+ * get_print_function - Find the corresponding 
+ * print function for the format specifier.
  * @specifier: Format specifier.
  *
  * Return: Pointer to the corresponding print function.
