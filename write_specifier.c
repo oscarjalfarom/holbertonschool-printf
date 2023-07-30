@@ -70,7 +70,7 @@ int write_s(char *buffer, int char_print, va_list value)
 	if (!str)
 		str = "(null)";
 
-	return(_copy_string(buffer, char_print, str));	
+	return (_copy_string(buffer, char_print, str));
 }
 
 /**
