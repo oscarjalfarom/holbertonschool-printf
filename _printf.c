@@ -17,20 +17,13 @@ int _printf(const char *format, ...)
 
 	buffer = malloc(3000);
 
-	if (format == NULL || buffer == NULL)
+	if ((!format || !buffer) || (format[0] == '%' && format[1] == '\0'))
 	{
 		free(buffer);
-		return (0);
-	}
-
-	if (format[0] == '%' && format[1] == '\0')
-	{
-		free(buffer);
-		return (0);
+		exit(1);
 	}
 
 	va_start(args, format);
-
 	while (format[i])
 	{
 		if (format[i] != '%')
