@@ -25,7 +25,43 @@ int _abs(int n)
  */
 char *_ia(int value, int base)
 {
-	/* Function implementation */
+	char buffer[1024];
+	int n, i;
+
+	if (base < 2 || base > 32)
+		exit(1);
+
+	n = _abs(value);
+
+	i = 0;
+	while (n)
+	{
+		int r = n % base;
+
+		r = _abs(r);
+		if (r >= 10)
+			buffer[i] = 65 + (r - 10);
+		else
+			buffer[i] = 48 + r;
+		i++;
+		n = n / base;
+	}
+
+	if (i == 0)
+	{
+		buffer[i] = '0';
+		i++;
+	}
+
+	if (value < 0 && base == 10)
+	{
+		buffer[i] = '-';
+		i++;
+	}
+
+	buffer[i] = '\0';
+
+	return (_reverse(buffer, i));
 }
 
 /**
@@ -37,7 +73,35 @@ char *_ia(int value, int base)
  */
 char *_utoa(unsigned int value, unsigned int base)
 {
-	/* Function implementation */
+	char buffer[1024];
+	unsigned int i, r;
+
+	if (base < 2 || base > 32)
+		exit(1);
+
+	i = 0;
+	while (value)
+	{
+		r = value % base;
+
+		if (r >= 10)
+			buffer[i] = 65 + (r - 10);
+		else
+			buffer[i] = 48 + r;
+
+		i++;
+		value = value / base;
+	}
+
+	if (i == 0)
+	{
+		buffer[i] = '0';
+		i++;
+	}
+
+	buffer[i] = '\0';
+
+	return (_reverse(buffer, i));
 }
 
 /**
