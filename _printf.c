@@ -31,7 +31,6 @@ int _printf(const char *format, ...)
 		else
 		{
 			format_printer = get_print_function(format[i + 1]);
-
 			if (!format_printer)
 			{
 				buffer[char_printf] = '%';
@@ -44,7 +43,6 @@ int _printf(const char *format, ...)
 		}
 		i++;
 	}
-
 	write(1, buffer, char_printf);
 	va_end(args);
 	free(buffer);
