@@ -12,12 +12,14 @@ int _printf(const char *format, ...)
 	int i = 0, char_printf = 0;
 	va_list args;
 	int (*format_printer)(char *, int, va_list);
+	
 	buffer = malloc(3000);
 	if ((!format || !buffer) || (format[0] == '%' && format[1] == '\0'))
 	{
 		free(buffer);
 		exit(1);
 	}
+
 	va_start(args, format);
 	while (format[i])
 	{
@@ -41,6 +43,7 @@ int _printf(const char *format, ...)
 		}
 		i++;
 	}
+
 	write(1, buffer, char_printf);
 	va_end(args);
 	free(buffer);
@@ -48,7 +51,7 @@ int _printf(const char *format, ...)
 }
 
 /**
- * get_print_function - Find the corresponding 
+ * get_print_function - Find the corresponding
  * print function for the format specifier.
  * @specifier: Format specifier.
  *
