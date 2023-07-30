@@ -1,0 +1,58 @@
+PRINTF(3)
+
+NAME
+       _printf - Print formatted data
+
+SYNOPSIS
+       #include <stdio.h>
+       #include "main.h"
+
+       int _printf(const char *format, ...);
+
+DESCRIPTION
+       The _printf function is a simplified implementation of the printf function from the C standard library. It allows printing formatted data to the standard output.
+
+       The format string provided in the 'format' argument can contain normal text characters and format specifiers that start with the '%' character. The format specifiers indicate what type of data should be printed and how it should be formatted.
+
+       The following format specifiers are supported by _printf:
+
+       %c: Print a character.
+       %s: Print a string of characters.
+       %d or %i: Print a signed integer in base 10.
+       %u: Print an unsigned integer in base 10.
+       %%: Print the '%' character.
+
+RETURN VALUE
+       The _printf function returns the total number of characters printed, or -1 if an error occurs.
+
+EXAMPLES
+       #include <stdio.h>
+       #include "main.h"
+
+       int main(void)
+       {
+           int num = 42;
+           char *str = "Hello, world!";
+
+           _printf("The number is: %d\n", num);
+           _printf("The string is: %s\n", str);
+
+           return (0);
+       }
+
+       Output:
+       The number is: 42
+       The string is: Hello, world!
+
+SEE ALSO
+       printf(3), putchar(3)
+
+HISTORY
+       The _printf function was created as part of a project to implement the printf function in the C programming language.
+
+AUTHOR
+       Oscar Julio Alfaro Montenegro
+       Steven Castrillon
+
+COPYRIGHT
+       Copyright 2023
