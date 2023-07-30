@@ -1,21 +1,32 @@
 #include "main.h"
 
+/**
+ * _printf - Print to the standard output based on the specified format.
+ * @format: Format string.
+ *
+ * Return: Number of characters printed or -1 if an error occurs.
+ */
 int _printf(const char *format, ...)
 {
 	char *buffer;
-	
 	int i = 0;
 	int char_printf = 0;
 
 	va_list args;
 	int (*format_printer)(char *, int, va_list);
 
-	buffer = malloc(3000); 
+	buffer = malloc(3000);
 
-	if ((!format || !buffer) || (format[0] == '%' && format[1] == '\0'))
+	if (format == NULL || buffer == NULL)
 	{
 		free(buffer);
-		exit(1);
+		return (0);
+	}
+
+	if (format[0] == '%' && format[1] == '\0')
+	{
+		free(buffer);
+		return (0);
 	}
 
 	va_start(args, format);
@@ -39,7 +50,7 @@ int _printf(const char *format, ...)
 				continue;
 			}
 
-			char_printf = format_printer(&buffer[char_printf],char_printf, args);
+			char_printf = format_printer(&buffer[char_printf], char_printf, args);
 			i++;
 		}
 
@@ -49,21 +60,28 @@ int _printf(const char *format, ...)
 	write(1, buffer, char_printf);
 	va_end(args);
 	free(buffer);
-	return(char_printf);
+	return (char_printf);
 }
 
-
+/**
+ * get_print_function - Find the corresponding print function for the format specifier.
+ * @specifier: Format specifier.
+ *
+ * Return: Pointer to the corresponding print function.
+ */
 int (*get_print_function(char specifier))(char *, int, va_list)
 {
 	int j = 0;
 
 	print_t format_specifiers[] = {
-
-		{"c", write_char},
-		{"s", write_string},
+		{"c", write_c},
+		{"d", write_d},
+		{"i", write_i},
+		{"u", write_u},
+		{"s", write_s},
 		{"%", write_percent},
 		{NULL, NULL}
-	};	
+	};
 
 	while (format_specifiers[j].type)
 	{
