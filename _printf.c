@@ -12,14 +12,12 @@ int _printf(const char *format, ...)
 	int i = 0, char_printf = 0;
 	va_list args;
 	int (*format_printer)(char *, int, va_list);
-
 	buffer = malloc(3000);
 	if ((!format || !buffer) || (format[0] == '%' && format[1] == '\0'))
 	{
 		free(buffer);
 		exit(1);
 	}
-
 	va_start(args, format);
 	while (format[i])
 	{
