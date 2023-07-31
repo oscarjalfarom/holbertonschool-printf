@@ -73,7 +73,7 @@ Here's an example of how does the parameters work in our `_printf()` function:
 
 int main()
 {
-    _printf("Cohort: %i", 19);
+    _printf("Cohort: %i", 21);
     return (0);
 }
 ```
