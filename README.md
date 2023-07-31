@@ -80,7 +80,7 @@ int main()
 The output of this main function will be:
 ```
 $ ./main.out
-Cohort: 19
+Cohort: 21
 ```
 
 </details>
